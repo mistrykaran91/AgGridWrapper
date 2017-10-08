@@ -1,0 +1,18 @@
+<div style="text-align:center">
+  <br/>
+  <br/> Ag Grid
+  <div class="clearfix">
+  </div>
+  <div class="clearfix">
+  </div>
+
+  <app-grid
+    column-definition-key="data"
+    [column-definition-service]='columnDefintionService'
+    [rowData]="rowData"
+    [loadData]="loadData"
+    (gridReady)="onReady($event)">
+
+  </app-grid>
+
+</div>

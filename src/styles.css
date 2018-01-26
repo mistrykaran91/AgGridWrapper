@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+        .ag-body {
+            position: inherit;
+            height: 100% !important;
+        }
+        .ag-cell {
+            border: none;
+        }
+        .ag-body-container{
+            min-height: 82px !important;
+        }

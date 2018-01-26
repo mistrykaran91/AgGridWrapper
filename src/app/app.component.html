@@ -6,14 +6,20 @@
   <div class="clearfix">
   </div>
 
-  <app-grid
-    column-definition-key="data"
-    [column-definition-service]='columnDefintionService'
-    [rowData]="rowData"
-    [loadData]="loadData"
-    (gridReady)="onReady($event)"
-    [parent]="this" >
+  <div>
+    
+    <!-- <app-grid column-definition-key="data" [column-definition-service]='columnDefintionService' [rowData]="rowData" [loadData]="loadData"
+      (gridReady)="onReady($event)" [parent]="this">
+    </app-grid> -->
 
-  </app-grid>
+  </div>
 
+  <div>
+    <label for="typeahead-template">Search for a state:</label>
+    <type-ahead [service]="service" placeholder="Search" >
+    </type-ahead>
+  </div>
+
+  <ng-template #popContent>Hello,
+    <b>{{name}}</b>!</ng-template>
 </div>

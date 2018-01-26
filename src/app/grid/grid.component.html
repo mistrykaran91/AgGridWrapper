@@ -1,9 +1,3 @@
-<ag-grid-angular
-
-style="width: 100%; height: 350px;"
-class="ag-fresh"
-[columnDefs]="columnDefs"
-[rowData]="rowData"
-[gridOptions]="gridOptions"
-
-(gridReady)="onReady($event)">
+<ag-grid-angular id="ag-grid" style="width: 100%; height: 100%;" class="ag-theme-fresh" [columnDefs]="columnDefs" [rowData]="rowData"
+  [gridOptions]="gridOptions" (gridReady)="onReady($event)">
+</ag-grid-angular>

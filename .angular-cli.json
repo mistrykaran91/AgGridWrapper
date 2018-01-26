@@ -19,10 +19,10 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
-        "styles.css",
         "../node_modules/ag-grid/dist/styles/ag-grid.css",
-        "../node_modules/ag-grid/dist/styles/theme-fresh.css",
-        "../node_modules/bootstrap/dist/css/bootstrap.min.css"
+        "../node_modules/ag-grid/dist/styles/ag-theme-bootstrap.css",
+        "../node_modules/bootstrap/dist/css/bootstrap.css",
+        "styles.css"
       ],
       "scripts": [],
       "environmentSource": "environments/environment.ts",

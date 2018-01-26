@@ -13,7 +13,7 @@ import { IAfterGuiAttachedParams, ICellEditorParams } from 'ag-grid/main';
 export class GridSelectComponent implements ICellEditorAngularComp {
 
   private params: any;
-  private list: any;
+  public list: any;
   private columnDef: any;
   currentValue: any;
 

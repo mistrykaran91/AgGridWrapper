@@ -3,7 +3,10 @@ import {
   SimpleChanges,
   Component,
   OnChanges,
-  Input
+  Input,
+  forwardRef,
+  EventEmitter,
+  Output
 } from "@angular/core";
 import { RefData } from "../data/refData";
 
@@ -18,27 +21,46 @@ import "rxjs/add/operator/map";
 import "rxjs/add/operator/switchMap";
 import "rxjs/add/operator/merge";
 import { HttpClient } from "@angular/common/http";
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from "@angular/forms";
 
 @Component({
-  moduleId: module.id,
   selector: "type-ahead",
   templateUrl: "./type-ahead.component.html",
-  styles: [`.form-control { width: 300px; display: inline; }`]
+  styles: [`.form-control { width: 300px; display: inline; }`],
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => TypeAHeadComponent),
+      multi: true
+    }
+  ]
 })
-export class TypeAHeadComponent implements OnChanges, OnInit {
-  @Input() data: any;
+export class TypeAHeadComponent implements ControlValueAccessor, OnInit {
+  @Input("data") _data = "";
+
+  onChange: any = () => {};
+  onTouched: any = () => {};
+
+  @Input("ngModel") ngModel: any;
+  @Input("ngModelChange") ngModelChange = new EventEmitter<any>();
+
+  get data() {
+    return this._data;
+  }
+
+  set data(value: any) {
+    this._data = value;
+    this.onChange(value);
+    this.onTouched();
+  }
+
+  public searching = false;
+  public searchFailed = false;
+
   @Input() service: Function;
   @Input() placeholder: string;
 
   constructor() {}
-
-  ngOnChanges(changes: SimpleChanges): void {}
-
-  ngOnInit(): void {}
-
-  public model: any;
-  public searching = false;
-  public searchFailed = false;
 
   public hideSearchingWhenUnsubscribed = new Observable(() => () =>
     (this.searching = false)
@@ -61,4 +83,22 @@ export class TypeAHeadComponent implements OnChanges, OnInit {
       .merge(this.hideSearchingWhenUnsubscribed);
 
   formatter = (x: any) => x.name;
+
+  writeValue(obj: any): void {
+    if (obj) {
+      this.data = obj;
+    }
+  }
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+  setDisabledState?(isDisabled: boolean): void {}
+
+  ngOnInit(): void {
+    this.ngModelChange.emit(this.ngModel);
+  }
 }

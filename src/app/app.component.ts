@@ -7,12 +7,12 @@ import {
   ColumnDefintionService,
   IColumnDefintionService
 } from "./grid/columnDef.service";
+import { FormBuilder } from "@angular/forms";
 
 @Component({
   selector: "app-root",
   templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.css"],
-  encapsulation: ViewEncapsulation.None
+  styleUrls: ["./app.component.css"]
 })
 export class AppComponent implements OnInit {
   rowData: any;
@@ -27,9 +27,12 @@ export class AppComponent implements OnInit {
   };
 
   items: any;
+  mainForm: any;
 
-  constructor(private remoteService: RemoteDataService) {
-
+  constructor(
+    private remoteService: RemoteDataService,
+    private fb: FormBuilder
+  ) {
     this.service = this.remoteService.fetchData.bind(this.remoteService);
 
     this.rowData = RefData.Data;
@@ -38,7 +41,11 @@ export class AppComponent implements OnInit {
     // this.genderList = ["Male", "Female"];
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.mainForm = this.fb.group({
+      country: [""]
+    });
+  }
 
   onRowSelected(selectedRow: any) {
     console.log(selectedRow.node.data);

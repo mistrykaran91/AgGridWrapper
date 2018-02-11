@@ -5,17 +5,13 @@
   </ng-template>
 
 
-  <div class="form-group">
-    <input id="typeahead-template" [class.is-invalid]="searchFailed" type="text" class="form-control" 
-    [(ngModel)]="model" 
-    [placeholder]="placeholder"
-    [ngbTypeahead]="search"     
-    [resultTemplate]="rt"
-    [inputFormatter]="formatter"    />
+  <div class="form-group" >
+    <input id="typeahead-template" [class.is-invalid]="searchFailed" type="text" class="form-control" [(ngModel)]="data" [placeholder]="placeholder"
+      [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" />
     <hr>
   </div>
   <span *ngIf="searching">Searching...</span>
   <div class="invalid-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
 </div>
 
-<!-- <pre>Model: {{ model | json }}</pre> -->
+ <!-- <pre>Model: {{ mainForm.get('country').value }}</pre>  -->

@@ -1,4 +1,4 @@
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
 import { AgGridModule } from "ag-grid-angular";
@@ -26,6 +26,7 @@ import { ColumnDefintionService } from "./grid/columnDef.service";
   imports: [
     BrowserModule,
     FormsModule,
+    ReactiveFormsModule,
     CommonModule,
     HttpClientModule,
     AgGridModule.withComponents([GridSelectComponent, GridPopoverComponent]),

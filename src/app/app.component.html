@@ -7,19 +7,25 @@
   </div>
 
   <div>
-    
+
     <!-- <app-grid column-definition-key="data" [column-definition-service]='columnDefintionService' [rowData]="rowData" [loadData]="loadData"
       (gridReady)="onReady($event)" [parent]="this">
     </app-grid> -->
 
   </div>
 
-  <div>
+  <div [formGroup]="mainForm">
     <label for="typeahead-template">Search for a state:</label>
-    <type-ahead [service]="service" placeholder="Search" >
+    <type-ahead formControlName="country" [service]="service" placeholder="Search">
     </type-ahead>
+
   </div>
 
-  <ng-template #popContent>Hello,
-    <b>{{name}}</b>!</ng-template>
+
+  <type-ahead [(ngModel)]="country" [service]="service" placeholder="Search">
+  </type-ahead>
+
+  <pre>Model: {{ mainForm.value | json }}</pre>
+
+  <pre>Model: {{ country | json }}</pre>
 </div>

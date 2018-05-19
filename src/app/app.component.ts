@@ -1,8 +1,9 @@
+import { RemoteDataService } from './services/remote-data.service';
 import { Component, OnInit, ViewEncapsulation, ViewChild } from "@angular/core";
 import { GridOptions } from "ag-grid/main";
 import { RefData } from "./data/refData";
 import { HttpClient } from "@angular/common/http";
-import { RemoteDataService } from "./data/remote-data.service";
+
 import {
   ColumnDefintionService,
   IColumnDefintionService
@@ -15,19 +16,22 @@ import { FormBuilder } from "@angular/forms";
   styleUrls: ["./app.component.css"]
 })
 export class AppComponent implements OnInit {
+
   rowData: any;
   loadData: boolean = false;
   columnDefintionService: IColumnDefintionService = new ColumnDefintionService();
   name: string = "Test";
 
   @ViewChild("popContent") content;
-  service: Function;
   ancillaries = {
     genderList: []
   };
 
   items: any;
   mainForm: any;
+
+  service: Function;
+  property: string = 'name';
 
   constructor(
     private remoteService: RemoteDataService,
@@ -43,7 +47,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.mainForm = this.fb.group({
-      country: [""]
+      country: ["India"]
     });
   }
 
@@ -59,10 +63,15 @@ export class AppComponent implements OnInit {
   getRows(filter: string = "") {
     debugger;
 
-    if (filter === "") {
-      filter = "nor";
-    }
+    // if (filter === "") {
+    //   filter = "id";
+    // }
 
-    this.remoteService.fetchData(filter);
+    // this.remoteService.fetchData(filter);
+    return RefData.Data;
+  }
+
+  onSelectItem(data: any) {
+    debugger;
   }
 }

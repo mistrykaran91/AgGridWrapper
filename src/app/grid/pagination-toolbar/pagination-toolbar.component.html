@@ -1,0 +1,33 @@
+<div class="pagi_main">
+  <div class="form-inline pagi_inner">
+      <button class="btn btn-link pagi_action" (click)="onPreviousClick()" [disabled]="pagination.currentPage == 1">
+    <i class="fa fa-angle-left"></i> 
+  </button>
+      <button class="pagi_no" (click)="onPageNumberChanged(pagination.currentPage)">{{ pagination.currentPage || 1 }}</button>
+
+      <button class="pagi_no" *ngIf="pageExists(pagination.currentPage+1)" (click)="onPageNumberChanged(pagination.currentPage+1)">
+          {{pagination.currentPage + 1 }}
+      </button>
+
+      <button class="pagi_no" *ngIf="pageExists(pagination.currentPage+2)" (click)="onPageNumberChanged(pagination.currentPage+2)">
+          {{ pagination.currentPage + 2}}
+      </button>
+
+      <button class="pagi_no" *ngIf="pageExists(pagination.currentPage+3)" (click)="onPageNumberChanged(pagination.currentPage+3)">
+          {{pagination.currentPage + 3}}
+      </button>
+
+      <button *ngIf="pagination.totalPage > 1" class="pagi_no" (click)="onPageNumberChanged(pagination.totalPage)">
+          .. {{pagination.totalPage || 1 }}
+      </button>
+
+      <button class="btn btn-link pagi_action pagi_next" (click)="onNextClick()" [disabled]="pagination.currentPage === pagination.totalPage || pagination.totalPage === 0">
+              <i class="fa fa-angle-right"></i>
+      </button>
+
+      <label for="rowsPerPage" class="entry_text"> Show Entries</label>
+      <select class="form-control pagi_count" id="pageSize" [(ngModel)]="pagination.pageSize" (change)="onPageSizeChanged()">
+        <option *ngFor="let row of rowsPerPage"  [ngValue]="row" >{{row}}</option>
+    </select>
+  </div>
+</div>

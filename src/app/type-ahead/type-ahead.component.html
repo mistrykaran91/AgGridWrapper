@@ -1,17 +1,16 @@
-<div class="col-xs-12 col-md-3 col-lg-3">
+<!-- <div class="col-xs-12 col-md-12 col-lg-12"> -->
+<!-- <ng-template #rt let-r="result" let-t="term">
+  {{ getProperty(r) }}
+</ng-template> -->
 
-  <ng-template #rt let-r="result" let-t="term">
-    {{ r.name}}
-  </ng-template>
+<div class="form-group">
+  <input id="typeahead-template" type="text" class="form-control" [(ngModel)]="data" [placeholder]="placeholder" [ngbTypeahead]="search"
+    [resultFormatter]="getProperty" [inputFormatter]="formatter" (selectItem)="onSelectItem($event)" style="min-width:150px;" [attr.disabled]="isDisabled"
+  />
+  <span *ngIf="searching && data.length > 2">Searching...</span>
+  <span *ngIf="searching  && data.length == 1">Please type {{ minCharacter }} character for search</span>
+  <span class="form-control" *ngIf="searchFailed && data.length > minCharacter">No results found.</span>
+  <!-- (change)="onObjectCheck($event.target.value)" (blur)="onBlur()" -->
 
-
-  <div class="form-group" >
-    <input id="typeahead-template" [class.is-invalid]="searchFailed" type="text" class="form-control" [(ngModel)]="data" [placeholder]="placeholder"
-      [ngbTypeahead]="search" [resultTemplate]="rt" [inputFormatter]="formatter" />
-    <hr>
-  </div>
-  <span *ngIf="searching">Searching...</span>
-  <div class="invalid-feedback" *ngIf="searchFailed">Sorry, suggestions could not be loaded.</div>
 </div>
-
- <!-- <pre>Model: {{ mainForm.get('country').value }}</pre>  -->
+<!-- </div> -->

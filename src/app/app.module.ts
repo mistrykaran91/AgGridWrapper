@@ -1,3 +1,7 @@
+import { UtilService } from './services/util.service';
+import { PaginationToolbarComponent } from './grid/pagination-toolbar/pagination-toolbar.component';
+import { TypeAheadComponent } from './type-ahead/type-ahead.component';
+import { RemoteDataService } from './services/remote-data.service';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -11,9 +15,8 @@ import { GridComponent } from "./grid/grid.component";
 import { AppComponent } from "./app.component";
 import { GridSelectComponent } from "./grid/select.component";
 import { GridPopoverComponent } from "./grid/grid.popover.component";
-import { TypeAHeadComponent } from "./type-ahead/type-ahead.component";
-import { RemoteDataService } from "./data/remote-data.service";
 import { ColumnDefintionService } from "./grid/columnDef.service";
+import { NgbHighlight } from '@ng-bootstrap/ng-bootstrap/typeahead/highlight';
 
 @NgModule({
   declarations: [
@@ -21,7 +24,8 @@ import { ColumnDefintionService } from "./grid/columnDef.service";
     GridComponent,
     GridSelectComponent,
     GridPopoverComponent,
-    TypeAHeadComponent
+    PaginationToolbarComponent,
+    TypeAheadComponent
   ],
   imports: [
     BrowserModule,
@@ -31,9 +35,9 @@ import { ColumnDefintionService } from "./grid/columnDef.service";
     HttpClientModule,
     AgGridModule.withComponents([GridSelectComponent, GridPopoverComponent]),
     NgbPopoverModule.forRoot(),
-    NgbTypeaheadModule.forRoot()
+    NgbTypeaheadModule.forRoot()    
   ],
-  providers: [ColumnDefintionService, RemoteDataService],
+  providers: [ColumnDefintionService, RemoteDataService, UtilService],
   bootstrap: [AppComponent]
 })
-export class AppModule {}
+export class AppModule { }

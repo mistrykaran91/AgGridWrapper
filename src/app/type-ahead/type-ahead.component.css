@@ -1,0 +1,4 @@
+:host /deep/ .dropdown-menu {
+  overflow-y: auto;
+  max-height: 300px !important;
+}

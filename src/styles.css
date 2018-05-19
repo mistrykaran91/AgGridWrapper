@@ -10,3 +10,10 @@
         .ag-body-container{
             min-height: 82px !important;
         }
+
+        .grid-sort{
+          color:Red !important;
+          background-color: aqua; 
+          text-decoration-color: aqua;
+        }
+        

@@ -20,7 +20,8 @@ export class ColumnDefintionService implements IColumnDefintionService {
             headerName: "#",
             checkboxSelection: true,
             pinned: true,
-            width: 50
+            width: 50,
+            suppressSorting: true
           },
           {
             headerName: "FirstName",
@@ -30,7 +31,8 @@ export class ColumnDefintionService implements IColumnDefintionService {
           {
             headerName: "LastName",
             field: "lastName",
-            editable: true
+            editable: true,
+            suppressSorting: true
           },
           {
             headerName: "Age",

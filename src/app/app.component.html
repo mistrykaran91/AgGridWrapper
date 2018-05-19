@@ -6,26 +6,19 @@
   <div class="clearfix">
   </div>
 
-  <div>
+  <!-- <div>
 
-    <!-- <app-grid column-definition-key="data" [column-definition-service]='columnDefintionService' [rowData]="rowData" [loadData]="loadData"
-      (gridReady)="onReady($event)" [parent]="this">
-    </app-grid> -->
+    <app-grid column-definition-key="data" [column-definition-service]='columnDefintionService' [rowData]="rowData" [loadData]="loadData"
+      (gridReady)="onReady($event)" [parent]="this" (getRows)="getRows($event)" >
+    </app-grid>
 
+  </div> -->
+  <div class="container">
+    <div class="col-md-3 col-xs-6 col-lg-3">
+        <!-- [staticList]="['ALL']" --> 
+      <app-type-ahead [property]="property" [service]="service" (selectItemEvent)="onSelectItem($event)" [isDirectResult]="true"  >
+      </app-type-ahead>
+    </div>
   </div>
 
-  <div [formGroup]="mainForm">
-    <label for="typeahead-template">Search for a state:</label>
-    <type-ahead formControlName="country" [service]="service" placeholder="Search">
-    </type-ahead>
-
-  </div>
-
-
-  <type-ahead [(ngModel)]="country" [service]="service" placeholder="Search">
-  </type-ahead>
-
-  <pre>Model: {{ mainForm.value | json }}</pre>
-
-  <pre>Model: {{ country | json }}</pre>
 </div>
